@@ -94,7 +94,10 @@ app.locals.title = `${capitalized(projectName)} created with IronLauncher`;
 const index = require("./routes/index");
 app.use("/", index);
 
-const login = require("./routes/auth-routes/auth.routes");
+const loginSteam = require("./routes/auth-routes/authSteam.routes");
+app.use("/", loginSteam);
+
+const login = require("./routes/auth-routes");
 app.use("/", login);
 
 module.exports = app;
