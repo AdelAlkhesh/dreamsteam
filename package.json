@@ -7,12 +7,21 @@
     "dev": "nodemon server.js"
   },
   "dependencies": {
+    "@passport-next/passport-openid": "^1.0.0",
+    "axios": "^0.24.0",
+    "bcrypt": "^5.0.1",
+    "connect-mongo": "^4.6.0",
     "cookie-parser": "^1.4.6",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "express-session": "^1.17.2",
     "hbs": "^4.2.0",
+    "mongo-connect": "0.0.6",
     "mongoose": "^6.0.13",
     "morgan": "^1.10.0",
+    "passport": "^0.5.0",
+    "passport-local": "^1.0.0",
+    "passport-steam": "^1.0.17",
     "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
