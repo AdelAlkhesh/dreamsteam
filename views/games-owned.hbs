@@ -1,0 +1,9 @@
+<h1>Games Owned: {{count}}</h1>
+
+{{#each list}}
+<ul>
+    <li>{{this.name}}</li>
+    <li>{{this.playtime_forever}} minutes</li>
+    <li><img src="https://steamcdn-a.akamaihd.net/steam/apps/{{this.appid}}/header.jpg" alt=""></li>
+</ul>
+{{/each}}

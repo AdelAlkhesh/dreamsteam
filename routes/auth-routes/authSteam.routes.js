@@ -6,7 +6,8 @@ const router = new Router();
 const UserInfo = require("../../models/UserInfo.model");
 const User = require("../../models/User.model");
 const axios = require("axios");
-
+var helpers = require("handlebars-helpers");
+var math = helpers.math();
 // User model
 
 router.get("/auth/login", passport.authenticate("steam"), function (req, res) {
@@ -53,6 +54,21 @@ router.get("/account", ensureAuthenticated, function (req, res) {
     })
     .catch((err) => {});
 });
+
+
+
+router.get('/account/ownedgames', ensureAuthenticated, (req, res, next) => {
+  axios.get(`https://api.steampowered.com/IPlayerService/GetOwnedGames/v1/?key=${process.env.API_KEY}&steamid=${req.user.steamid}&include_appinfo=1&include_played_free_games=1`)
+    .then((games) => {
+      let gameCount = games?.data?.response?.game_count;
+      let gameList = games?.data?.response?.games
+      
+      res.render('games-owned', {count: gameCount, list:gameList})
+    
+  }).catch((err) => {
+    next()
+  });
+})
 
 router.get("/logout", function (req, res) {
   req.logout();
