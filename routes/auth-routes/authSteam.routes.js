@@ -35,6 +35,9 @@ router.get("/account", ensureAuthenticated, function (req, res) {
     .then(async (userinfo) => {
       let userStats = userinfo?.data?.response?.players[0];
       let usersteamid = userinfo?.data?.response?.players[0].steamid;
+      let background = await axios.get(`https://api.steampowered.com/IPlayerService/GetProfileItemsEquipped/v1/?key=6CFD1621C5C18DE7771DF6C579BF2C25&steamid=${req.user.steamid}`)
+      let imgurl =
+        `https://steamcdn-a.akamaihd.net/steamcommunity/public/images/${background.data.response.profile_background.image_large}`;
 
       let check = await UserInfo.findOne({
         "players.steamid": `${usersteamid}`,
@@ -42,12 +45,12 @@ router.get("/account", ensureAuthenticated, function (req, res) {
 
       if (check != null) {
         console.log("found it");
-        res.render("account", { user: userStats });
+        res.render("account", { user: userStats, imgurl });
       } else {
         UserInfo.create({ players: userStats })
           .then(() => {
             console.log(userStats);
-            res.render("account", { user: userStats });
+            res.render("account", { user: userStats, imgurl });
           })
           .catch((err) => {});
       }
@@ -62,13 +65,19 @@ router.get('/account/ownedgames', ensureAuthenticated, (req, res, next) => {
     .then((games) => {
       let gameCount = games?.data?.response?.game_count;
       let gameList = games?.data?.response?.games
-      
-      res.render('games-owned', {count: gameCount, list:gameList})
+      let modified = gameList.map(ele => {
+        ele.playtime_forever = ele.playtime_forever / 60
+        return ele
+      })
+      res.render('games-owned', {count: gameCount, list:modified})
     
   }).catch((err) => {
     next()
   });
 })
+
+
+
 
 router.get("/logout", function (req, res) {
   req.logout();
