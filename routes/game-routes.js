@@ -15,21 +15,34 @@ router.get("/games", (req, res, next) => {
                 axios.get(`https://store.steampowered.com/api/appdetails?appids=${gameId[i].appid}`)
                 .then((gameResponse) => {
                     let gameInfo = gameResponse.data
-                    // let whatever = gameId[i].appid
-                    
                     let name = Object.keys(gameInfo)[0]
-                    gameArr.push(gameInfo[name].data)
-                    // console.log(gameInfo[name].data);
-                    console.log(gameArr);
+
+                    // gameArr = gameArr.push(gameInfo[name].data)
+                    // res.render("games.hbs", {games: gameArr})
+                    // console.log(gameArr, "inside loop");
+
+                    // console.log(gameStats);
+                    // return gameStats
+
                 }).catch((err) => {
                     next(err)
                 });
+                
             });
-            // console.log(gameArr);
+            // console.log(gameArr, "outside loop");
             res.render("games.hbs", {games: gameArr})
+            
         }).catch((err) => {
             next(err)
         });
 })
+
+
+router.get("/games/details", (req, res, next) => {
+    res.render("game-details.hbs")
+})
+
+
+
 
 module.exports = router
