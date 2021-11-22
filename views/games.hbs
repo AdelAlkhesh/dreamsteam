@@ -1,0 +1,26 @@
+<h1>This is the game page</h1>
+
+<form action="/games">
+    <input type="text" placeholder="Search Game">
+    <button type="submit">Search</button>
+</form>
+
+{{#each games}}
+<div>
+    <img src="" alt="img here">
+    <h3>name:{{this.data.name}}</h3>
+    <p>cost:</p>
+    <p>rating:</p>
+    <p>Genres:</p>
+    <ul>
+        <li>a</li>
+        <li>b</li>
+    </ul>
+</div>
+{{/each}}
+
+
+<footer>
+    <button>prev page</button>
+    <button>next page</button>
+</footer>
