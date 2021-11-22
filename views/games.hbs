@@ -1,0 +1,29 @@
+<h1>This is the game page</h1>
+
+<form action="/games">
+  <input type="text" placeholder="Search Game" />
+  <button type="submit">Search</button>
+</form>
+
+{{#each games}}
+  <div>
+    <img src="{{this.value.data.header_image}}" alt="img here" />
+    <h3>name:{{this.name}}</h3>
+    <p>cost: {{this.price_overview.final_formatted}}</p>
+    <p>rating:{{this.metacritic.score}}</p>
+    {{#each genres}}
+      <ul>
+        <li>{{this.description}}</li>
+      </ul>
+    {{/each}}
+    <ul>
+      <li>a</li>
+      <li>b</li>
+    </ul>
+  </div>
+{{/each}}
+
+<footer>
+  <button>prev page</button>
+  <button>next page</button>
+</footer>

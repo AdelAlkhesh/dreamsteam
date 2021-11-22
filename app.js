@@ -100,6 +100,9 @@ app.use("/", loginSteam);
 const login = require("./routes/auth-routes");
 app.use("/", login);
 
+const games = require("./routes/game-routes")
+app.use("/", games)
+
 module.exports = app;
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
