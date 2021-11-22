@@ -31,28 +31,27 @@ router.get("/account", ensureAuthenticated, function (req, res) {
     .get(
       `https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v2/?key=${process.env.API_KEY}&steamids=${req.user.steamid}`
     )
-    .then((userinfo) => {
-      let userStats = userinfo.data.response.players[0];
-      let usersteamid = userinfo.data.response.players[0].steamid;
-      
+    .then(async (userinfo) => {
+      let userStats = userinfo?.data?.response?.players[0];
+      let usersteamid = userinfo?.data?.response?.players[0].steamid;
 
-     
-      let check = UserInfo.findOne({ 'players.steamid': `${usersteamid}` });
-      console.log(check)
+      let check = await UserInfo.findOne({
+        "players.steamid": `${usersteamid}`,
+      });
 
-       if(check != null) {
-         console.log('found it')
-         res.render("account", { user: userinfo.data });
-       } else {
-      UserInfo.create({ players: userStats })
-        .then(() => {
-          console.log("did it");
-        })
-        .catch((err) => {});
-       }
+      if (check != null) {
+        console.log("found it");
+        res.render("account", { user: userStats });
+      } else {
+        UserInfo.create({ players: userStats })
+          .then(() => {
+            console.log(userStats);
+            res.render("account", { user: userStats });
+          })
+          .catch((err) => {});
+      }
     })
     .catch((err) => {});
-  res.render("account", { user: req.user });
 });
 
 router.get("/logout", function (req, res) {
