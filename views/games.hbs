@@ -7,7 +7,7 @@
 
 {{#each games}}
   <div>
-    <img src="{{this.header_image}}" alt="img here" />
+    <img src="{{this.value.data.header_image}}" alt="img here" />
     <h3>name:{{this.name}}</h3>
     <p>cost: {{this.price_overview.final_formatted}}</p>
     <p>rating:{{this.metacritic.score}}</p>

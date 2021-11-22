@@ -1,0 +1,19 @@
+<img src="{{gameData.data.header_image}}" alt="game image goes here">
+<h1>Game title goes here: {{gameData.data.name}}</h1>
+
+<div>Description here: {{gameData.data.short_description}}</div>
+
+<br>
+
+<label for="">Add to whislist</label>
+
+<select name="list" id="list">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+</select>
+
+<button>
+    <a href="https://store.steampowered.com/app/{{gameData.data.steam_appid}}/">Check it out on Steam</a>
+</button>
