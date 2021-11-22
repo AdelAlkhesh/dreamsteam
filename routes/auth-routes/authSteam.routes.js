@@ -3,6 +3,9 @@ const passport = require("passport");
 const { Router } = require("express");
 const { serializeUser } = require("passport");
 const router = new Router();
+const UserInfo = require("../../models/UserInfo.model");
+const User = require("../../models/User.model");
+const axios = require("axios");
 
 // User model
 
@@ -15,10 +18,7 @@ router.get(
   "/auth/login/return",
   passport.authenticate("steam", { failureRedirect: "/login" }),
   function (req, res) {
-    console.log(req.steamid);
-    // req.session.Userinfo =  
-    // Successful authentication, redirect home.
-    res.redirect("/");
+    res.redirect("/account");
   }
 );
 
@@ -27,6 +27,31 @@ router.get("/", function (req, res) {
 });
 
 router.get("/account", ensureAuthenticated, function (req, res) {
+  axios
+    .get(
+      `https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v2/?key=${process.env.API_KEY}&steamids=${req.user.steamid}`
+    )
+    .then((userinfo) => {
+      let userStats = userinfo.data.response.players[0];
+      let usersteamid = userinfo.data.response.players[0].steamid;
+      
+
+     
+      let check = UserInfo.findOne({ 'players.steamid': `${usersteamid}` });
+      console.log(check)
+
+       if(check != null) {
+         console.log('found it')
+         res.render("account", { user: userinfo.data });
+       } else {
+      UserInfo.create({ players: userStats })
+        .then(() => {
+          console.log("did it");
+        })
+        .catch((err) => {});
+       }
+    })
+    .catch((err) => {});
   res.render("account", { user: req.user });
 });
 
@@ -42,4 +67,3 @@ function ensureAuthenticated(req, res, next) {
   res.redirect("/");
 }
 module.exports = router;
-
