@@ -39,14 +39,18 @@ router.get("/account", ensureAuthenticated, function (req, res) {
       let level = await axios.get(
         `https://api.steampowered.com/IPlayerService/GetSteamLevel/v1/?key=${process.env.API_KEY}&steamid=${req.user.steamid}`
       );
+
+      //Grab the user's steam level
       let steamlevel = level.data.response.player_level
       let imgurl =
         `https://steamcdn-a.akamaihd.net/steamcommunity/public/images/${background.data.response.profile_background.image_large}`;
-
+      
+      
+      //Check if the steam id already exists in the database  
       let check = await UserInfo.findOne({
         "players.steamid": `${usersteamid}`,
       });
-
+      
       if (check != null) {
         console.log("found it");
         res.render("account", { user: userStats, imgurl, steamlevel });
