@@ -4,23 +4,40 @@
     <input type="text" placeholder="Search Game">
     <button type="submit">Search</button>
 </form>
-
+<br>
 {{#each games}}
 <div>
-    <img src="{{this.header_image}}" alt="img here">
-    <h3>name:{{this.name}}</h3>
-    <p>cost:</p>
-    <p>rating:</p>
+    <img src="{{this.data.header_image}}" alt="img here">
+    <h3>{{this.data.name}}</h3>
+    <p>{{this.data.price_overview.final_formatted}}</p>
+    
+    {{#if this.data.metacritic.score}}
+        <p>rating: {{this.data.metacritic.score}}</p>
+    {{else}}
+        <p>rating: NA</p>
+    {{/if}}
+    
     <p>Genres:</p>
     <ul>
-        <li>a</li>
-        <li>b</li>
+        {{#each this.data.genres}}
+            <p>{{this.description}}</p>
+        {{/each}}
     </ul>
+    
+    <form action="/games/{{this.data.steam_appid}}">
+        <button>Game Page</button>
+    </form>
+
+    <br>
 </div>
 {{/each}}
 
 
 <footer>
-    <button>prev page</button>
-    <button>next page</button>
+    <a href="/games/-1">
+        <button>prev page</button>
+    </a>
+    <a href="/games/+1">
+        <button>next page</button>
+    </a>
 </footer>
