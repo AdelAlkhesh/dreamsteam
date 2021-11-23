@@ -1,13 +1,16 @@
 const { default: axios } = require("axios")
 
 const router = require("express").Router()
-
+const Games = require("../models/Games.model")
 
 
 router.get("/games", (req, res, next) => {
 
-    axios.get(`https://api.steampowered.com/IStoreService/GetAppList/v1/?key=${process.env.API_KEY}&max_results=10
+    axios.get(`https://api.steampowered.com/IStoreService/GetAppList/v1/?key=${process.env.API_KEY}&max_results=1
     `)
+        
+
+
         .then((gameList) => {
             let gameId = gameList.data.response.apps
             let gameArr = []
@@ -28,10 +31,18 @@ router.get("/games", (req, res, next) => {
                     gameArr.forEach((gameObj, i) => {
                         let name = Object.keys(gameObj)
                         games.push(gameObj[name])
-                        })
+                        let gameData = gameObj[name].data
 
-                    // console.log(games[0].data.name);
-                    res.render("games.hbs", {games})
+
+                        Games.create({data: gameData})
+                        .then(() => {
+                            res.render("games.hbs", {games})
+                            // console.log(gameData);
+                        }).catch((err) => {
+                            next(err)
+                        });
+
+                    })
 
                 }).catch((err) => {
                     next(err)
