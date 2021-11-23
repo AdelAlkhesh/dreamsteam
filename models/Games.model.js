@@ -15,7 +15,7 @@ const gamesSchema = new Schema(
         final_formatted: String,
       },
       short_description: String,
-      developers: String,
+      developers: [String],
       metacritic: {
         score: Number,
       },
@@ -26,7 +26,7 @@ const gamesSchema = new Schema(
       ],
       Genre: [
         {
-          description,
+          description: String,
         },
       ],
       recommendations: {
@@ -39,7 +39,7 @@ const gamesSchema = new Schema(
       support_info: {
         url: String,
       },
-      player_count: Number,
+      // player_count: Number,
       
     },
   },
