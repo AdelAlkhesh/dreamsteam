@@ -8,9 +8,6 @@ router.get("/games", (req, res, next) => {
 
     axios.get(`https://api.steampowered.com/IStoreService/GetAppList/v1/?key=${process.env.API_KEY}&max_results=1
     `)
-        
-
-
         .then((gameList) => {
             let gameId = gameList.data.response.apps
             let gameArr = []
@@ -43,7 +40,7 @@ router.get("/games", (req, res, next) => {
                         });
 
                     })
-
+                    
                 }).catch((err) => {
                     next(err)
                 });
