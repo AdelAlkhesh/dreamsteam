@@ -2,8 +2,15 @@ const { Schema, model } = require("mongoose");
 
 const gameListSchema = new Schema(
   {
-    steam_appid: Number,
+    games: [{
+      apps: {
+        appid: Number,
+        name: String
+      }
+    }],
     name: String,
+    is_private: Boolean,
+    description: String, 
     user: {
       type: [Schema.Types.ObjectId],
       ref: "User",
