@@ -54,14 +54,15 @@ passport.deserializeUser((id, cb) => {
 passport.use(
   new SteamStrategy(
     {
-      returnURL: "http://localhost:3000/auth/login/return",
-      realm: "http://localhost:3000/",
+      returnURL: "https://thedreamsteam.herokuapp.com/auth/login/return",
+      realm: "https://thedreamsteam.herokuapp.com/",
       apiKey: process.env.API_KEY,
     },
     async function (identifier, profile, done) {
-      
-        const steamidsplit = identifier.split("https://steamcommunity.com/openid/id/");
-        const steamid = steamidsplit[1]
+      const steamidsplit = identifier.split(
+        "https://steamcommunity.com/openid/id/"
+      );
+      const steamid = steamidsplit[1];
       try {
         let userResponse = await User.findOne({ steamid });
         if (userResponse) {
@@ -102,6 +103,9 @@ app.use("/", login);
 
 const games = require("./routes/game-routes")
 app.use("/", games)
+
+const lists = require("./routes/list-routes")
+app.use("/", lists)
 
 module.exports = app;
 
