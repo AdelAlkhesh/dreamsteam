@@ -1,0 +1,28 @@
+<h1>Create a list</h1>
+
+<form method="POST" action="/lists/create">
+    <div class="mb-3">
+        <label class="form-label">Name of the list</label>
+        <input class="form-control" type="text" name="title" />
+        <br />
+        <label class="form-label">Genre</label>
+        <input class="form-control" type="text" name="genre" />
+        <br />
+        <br />
+        <label class="form-label">Plot</label>
+        <input class="form-control" type="text" name="plot" />
+        <br />
+
+        <label for="cast">Choose the cast:</label>
+        <select name="cast" multiple>
+            {{#each response}}
+
+            <option value="{{this._id}}">{{this.name}}</option>
+
+            {{/each}}
+        </select>
+        <br />
+
+        <button class="btn btn-light" type="submit">SUBMIT</button>
+    </div>
+</form>
