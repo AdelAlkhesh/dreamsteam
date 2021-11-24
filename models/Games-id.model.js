@@ -3,7 +3,7 @@ const { Schema, model } = require("mongoose");
 const GamesIdSchema = new Schema({
     apps: {
         appid: Number,
-        name: String,
+        name: String
     }
 })
 
