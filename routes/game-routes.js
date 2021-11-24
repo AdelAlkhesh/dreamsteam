@@ -5,7 +5,7 @@ const Games = require("../models/Games.model")
 
 
 // router.get("/gamelists", (req, res, next) => {
-oku 
+
 // })
 
 // router.get('/createlist', (req, res, next) => {
