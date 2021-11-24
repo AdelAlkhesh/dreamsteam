@@ -1,5 +1,7 @@
-<h1>All your lists</h1>
+<h1>All lists</h1>
 
 {{#each lists}}
-    <li>{{this.name}}</li>
+    <form action="/lists/{{this._id}}">
+        <button>{{this.name}}</button>
+    </form>
 {{/each}}

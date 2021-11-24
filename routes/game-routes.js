@@ -2,6 +2,7 @@ const { default: axios } = require("axios")
 
 const router = require("express").Router()
 const Games = require("../models/Games.model")
+const GamesIdModel = require("../models/Games-id.model")
 
 
 // router.get("/gamelists", (req, res, next) => {
@@ -15,6 +16,19 @@ const Games = require("../models/Games.model")
 // router.post("/createlist", (req, res, next) => {
 
 // });
+
+router.get("/games", (req, res, next) => {
+    GamesIdModel.find().limit(100)
+    .then((games) => {
+        // console.log(games);
+        res.render("../views/games.hbs", {games})
+        
+    }).catch((err) => {
+        
+    });
+})
+
+
 
 
 router.get("/games/:id", (req, res, next) => {

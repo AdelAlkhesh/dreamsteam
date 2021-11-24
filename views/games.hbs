@@ -6,31 +6,11 @@
 </form>
 <br>
 {{#each games}}
-<div>
-    <img src="{{this.data.header_image}}" alt="img here">
-    <h3>{{this.data.name}}</h3>
-    <p>{{this.data.price_overview.final_formatted}}</p>
-    
-    {{#if this.data.metacritic.score}}
-        <p>rating: {{this.data.metacritic.score}}</p>
-    {{else}}
-        <p>rating: NA</p>
-    {{/if}}
-    
-    <p>Genres:</p>
-    <ul>
-        {{#each this.data.genres}}
-            <p>{{this.description}}</p>
-        {{/each}}
-    </ul>
-    
-    <form action="/games/{{this.data.steam_appid}}">
-        <button>Game Page</button>
-    </form>
-
-    <br>
-</div>
+<form action="/games/{{this.apps.appid}}">
+    <button>{{this.apps.name}}</button>
+</form>
 {{/each}}
+
 
 <footer>
     <a href="/games/-1">
