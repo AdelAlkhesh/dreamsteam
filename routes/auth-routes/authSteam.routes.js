@@ -6,8 +6,6 @@ const router = new Router();
 const UserInfo = require("../../models/UserInfo.model");
 const User = require("../../models/User.model");
 const axios = require("axios");
-var helpers = require("handlebars-helpers");
-var math = helpers.math();
 // User model
 
 router.get("/auth/login", passport.authenticate("steam"), function (req, res) {
