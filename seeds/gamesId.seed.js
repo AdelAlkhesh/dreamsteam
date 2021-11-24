@@ -10,10 +10,10 @@ function makeRequest(results) {
   axios.get(apiLink).then((gameList) => {
       results = gameList.data.response;
       let gamePromises = [];
-    let gameData = gameList.data.response.apps;
-    gameData.forEach((ele) => {
-      gamePromises.push(GamesIdModel.create({ apps: ele }));
-    });
+      let gameData = gameList.data.response.apps;
+      gameData.forEach((ele) => {
+        gamePromises.push(GamesIdModel.create({ apps: ele }));
+      });
       Promise.allSettled(gamePromises)
       .then((result) => {
           if (results.have_more_results) {
@@ -31,3 +31,4 @@ function makeRequest(results) {
 }
 
 makeRequest();
+

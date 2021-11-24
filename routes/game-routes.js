@@ -6,48 +6,48 @@ const Games = require("../models/Games.model")
 
 router.get("/games", (req, res, next) => {
 
-    axios.get(`https://api.steampowered.com/IStoreService/GetAppList/v1/?key=${process.env.API_KEY}&max_results=1
-    `)
-        .then((gameList) => {
-            let gameId = gameList.data.response.apps
-            let gameArr = []
-            let games = []
-            let myPromises = []
+    // axios.get(`https://api.steampowered.com/IStoreService/GetAppList/v1/?key=${process.env.API_KEY}&max_results=1
+    // `)
+    //     .then((gameList) => {
+    //         let gameId = gameList.data.response.apps
+    //         let gameArr = []
+    //         let games = []
+    //         let myPromises = []
 
-            gameId.forEach((game, i) => {
-                myPromises.push(axios.get(`https://store.steampowered.com/api/appdetails?appids=${gameId[i].appid}`))
-            });
-            Promise.allSettled(myPromises)
-                .then((gameResponse) => {
+    //         gameId.forEach((game, i) => {
+    //             myPromises.push(axios.get(`https://store.steampowered.com/api/appdetails?appids=${gameId[i].appid}`))
+    //         });
+    //         Promise.allSettled(myPromises)
+    //             .then((gameResponse) => {
 
-                    gameResponse.forEach((elem, i) => {
-                        let gameInfo = elem.value.data
-                        gameArr.push(gameInfo)
-                    })
+    //                 gameResponse.forEach((elem, i) => {
+    //                     let gameInfo = elem.value.data
+    //                     gameArr.push(gameInfo)
+    //                 })
 
-                    gameArr.forEach((gameObj, i) => {
-                        let name = Object.keys(gameObj)
-                        games.push(gameObj[name])
-                        let gameData = gameObj[name].data
+    //                 gameArr.forEach((gameObj, i) => {
+    //                     let name = Object.keys(gameObj)
+    //                     games.push(gameObj[name])
+    //                     let gameData = gameObj[name].data
 
 
-                        Games.create({data: gameData})
-                        .then(() => {
-                            res.render("games.hbs", {games})
-                            // console.log(gameData);
-                        }).catch((err) => {
-                            next(err)
-                        });
+    //                     Games.create({data: gameData})
+    //                     .then(() => {
+    //                         res.render("games.hbs", {games})
+    //                         // console.log(gameData);
+    //                     }).catch((err) => {
+    //                         next(err)
+    //                     });
 
-                    })
+    //                 })
                     
-                }).catch((err) => {
-                    next(err)
-                });
+    //             }).catch((err) => {
+    //                 next(err)
+    //             });
             
-        }).catch((err) => {
-            next(err)
-        });
+    //     }).catch((err) => {
+    //         next(err)
+    //     });
 })
 
 
