@@ -4,51 +4,17 @@ const router = require("express").Router()
 const Games = require("../models/Games.model")
 
 
-router.get("/games", (req, res, next) => {
+// router.get("/gamelists", (req, res, next) => {
+oku 
+// })
 
-    axios.get(`https://api.steampowered.com/IStoreService/GetAppList/v1/?key=${process.env.API_KEY}&max_results=1
-    `)
-        .then((gameList) => {
-            let gameId = gameList.data.response.apps
-            let gameArr = []
-            let games = []
-            let myPromises = []
+// router.get('/createlist', (req, res, next) => {
 
-            gameId.forEach((game, i) => {
-                myPromises.push(axios.get(`https://store.steampowered.com/api/appdetails?appids=${gameId[i].appid}`))
-            });
-            Promise.allSettled(myPromises)
-                .then((gameResponse) => {
+// })
 
-                    gameResponse.forEach((elem, i) => {
-                        let gameInfo = elem.value.data
-                        gameArr.push(gameInfo)
-                    })
+// router.post("/createlist", (req, res, next) => {
 
-                    gameArr.forEach((gameObj, i) => {
-                        let name = Object.keys(gameObj)
-                        games.push(gameObj[name])
-                        let gameData = gameObj[name].data
-
-
-                        Games.create({data: gameData})
-                        .then(() => {
-                            res.render("games.hbs", {games})
-                            // console.log(gameData);
-                        }).catch((err) => {
-                            next(err)
-                        });
-
-                    })
-                    
-                }).catch((err) => {
-                    next(err)
-                });
-            
-        }).catch((err) => {
-            next(err)
-        });
-})
+// });
 
 
 router.get("/games/:id", (req, res, next) => {

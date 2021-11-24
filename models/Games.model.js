@@ -24,7 +24,7 @@ const gamesSchema = new Schema(
           description: String,
         },
       ],
-      Genre: [
+      genres: [
         {
           description: String,
         },
@@ -40,7 +40,6 @@ const gamesSchema = new Schema(
         url: String,
       },
       // player_count: Number,
-      
     },
   },
   {

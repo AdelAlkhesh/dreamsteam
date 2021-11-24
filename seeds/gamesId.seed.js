@@ -1,6 +1,7 @@
 require("../db");
 const mongoose = require("mongoose");
 const GamesIdModel = require("../models/Games-id.model");
+const Games = require("../models/Games.model");
 const axios = require("axios");
 
 // function makeRequest(results) {
@@ -32,61 +33,40 @@ const axios = require("axios");
 
 // makeRequest();
 
+// GamesIdModel.find()
+//   .limit(10)
 
-
-GamesIdModel.find().limit(1)
-  .then((docs) => {
-    let games = [];
-    let gameArr = [];
-    let myPromises = []
-    let gameInfo = []
-    docs.forEach(ele => {
-      myPromises.push(
-        axios.get(
-          `https://store.steampowered.com/api/appdetails?appids=${ele.apps.appid}`
-        )
-      );
-    })
-    Promise.allSettled(myPromises)
-      .then((response) => {
-      console.log(response);
-    })
-  })
-        //     let gameArr = []
-        //     let games = []
-        //     let myPromises = []
-
-        //     gameId.forEach((game, i) => {
-        //         myPromises.push(axios.get(`https://store.steampowered.com/api/appdetails?appids=${gameId[i].appid}`))
-        //     });
-        //     Promise.allSettled(myPromises)
-        //         .then((gameResponse) => {
-
-        //             gameResponse.forEach((elem, i) => {
-        //                 let gameInfo = elem.value.data
-        //                 gameArr.push(gameInfo)
-        //             })
-
-        //             gameArr.forEach((gameObj, i) => {
-        //                 let name = Object.keys(gameObj)
-        //                 games.push(gameObj[name])
-        //                 let gameData = gameObj[name].data
-
-
-        //                 Games.create({data: gameData})
-        //                 .then(() => {
-        //                     res.render("games.hbs", {games})
-        //                     // console.log(gameData);
-        //                 }).catch((err) => {
-        //                     next(err)
-        //                 });
-
-        //             })
-                    
-        //         }).catch((err) => {
-        //             next(err)
-        //         });
-            
-        // }).catch((err) => {
-        //     next(err)
-        // });
+//   .then((docs) => {
+//     let games = [];
+//     let gameArr = [];
+//     let myPromises = [];
+//     docs.forEach((ele) => {
+//       myPromises.push(
+//         axios.get(
+//           `https://api.steamapis.com/market/app/${ele.apps.appid}?api_key=6CFD1621C5C18DE7771DF6C579BF2C25`
+//         )
+//       );
+//     });
+//     Promise.allSettled(myPromises)
+//       .then((gameResponse) => {
+//         console.log(gameResponse);
+//         // gameResponse.forEach((elem, i) => {
+//         //   let gameInfo = elem.value.data;
+//         //   gameArr.push(gameInfo);
+//         // });
+//         // gameArr.forEach((gameObj, i) => {
+//         //   let name = Object.keys(gameObj);
+//         //   games.push(gameObj[name]);
+//         //   let gameData = gameObj[name].data;
+//         //   Games.create({ data: gameData });
+//         // });
+//       })
+//       .then(() => {
+//         console.log("All done");
+//         mongoose.connection.close;
+//       })
+//       .catch((err) => {
+//         console.log("Nope");
+//         mongoose.connection.close;
+//       });
+//   });
