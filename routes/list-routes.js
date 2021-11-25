@@ -45,7 +45,7 @@ router.get("/lists/:listId/edit", (req, res, next) => {
     const {listId} = req.params
     GameList.findById(listId)
     .then((result) => {
-        console.log(result)
+        // console.log(result)
         res.render("list-edit.hbs", {result})
     }).catch((err) => {
         next(err)
