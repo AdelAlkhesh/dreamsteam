@@ -6,7 +6,6 @@ router.get("/lists", (req, res, next) => {
     GameList.find()
     .populate()
     .then((lists) => {
-
         res.render("../views/lists.hbs", {lists})
     }).catch((err) => {
         
