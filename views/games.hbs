@@ -16,10 +16,27 @@
 </form>
 <br />
 {{#each games}}
+  <div class="table-responsive">
+    <table class="table table-hover table-dark align-middle">
+      <thead>
+        <tr class="align-">
+          <th scope="col">id</th>
+          <th scope="col">Game</th>
+          <th scope="col">Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">{{this.apps.appid}}</th>
+          <td>{{this.apps.name}}</td>
+          <td><button>Game page</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-  <form action="/games/{{this.apps.appid}}">
+  {{!-- <form action="/games/{{this.apps.appid}}">
     <button>{{this.apps.name}}</button>
-  </form>
+  </form> --}}
 
 {{/each}}
-
