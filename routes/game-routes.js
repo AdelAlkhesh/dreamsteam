@@ -29,7 +29,7 @@ router.get("/games", (req, res, next) => {
       .catch((err) => {});
   } else {
     GamesIdModel.find()
-      .limit(100)
+      .limit(1000)
       .then((games) => {
         // console.log(games);
         res.render("games.hbs", { games });
