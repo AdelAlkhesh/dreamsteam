@@ -1,16 +1,23 @@
-<h1>All lists</h1>
+<div class="list-header">
+  <h1>All lists</h1>
+  <button><a href="/lists/create">Create a new list</a></button>
+</div>
 
+
+<div class="lists">
 {{#each lists}}
-  {{#if this.name}}
-    <div class="card text-dark bg-light mb-3" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">{{this.name}}</h5>
-        <p class="card-text">{{this.description}}</p>
-        <a><form action="/lists/{{this._id}}">
-            <button>{{this.name}}</button>
-          </form></a>
-      </div>
-    </div>
-  {{/if}}
-
+{{#if this.name}}
+<div class="card text-dark bg-light mb-3" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{this.name}}</h5>
+    <p class="card-text">{{this.description}}</p>
+    <a>
+      <form action="/lists/{{this._id}}">
+        <button>Details</button>
+      </form>
+    </a>
+  </div>
+</div>
+{{/if}}
 {{/each}}
+</div>

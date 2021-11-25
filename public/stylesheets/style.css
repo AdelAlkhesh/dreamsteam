@@ -12,7 +12,8 @@ h1 {
 }
 
 .account {
-  height: 800px;
+  background-size: cover;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -119,7 +120,7 @@ h1 {
 }
 
 .steam {
-  background: linear-gradient( to right, #75b022 5%, #588a1b 95%);
+  background: linear-gradient(to right, #75b022 5%, #588a1b 95%);
   border-radius: 5px;
   border: 1px solid black;
   color: white;
@@ -250,9 +251,7 @@ h1 {
   text-decoration: none;
   color: white;
   font-size: 30px;
-
 }
-
 
 .notfound {
   height: 700px;
@@ -290,4 +289,28 @@ h1 {
   color: white;
   border-radius: 10px;
   font-size: 25px;
+}
+
+.lists {
+  margin-top: 25px;
+  background-color: ;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.list-header {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.list-header h1 {
+  font-size: 75px;
+}
+
+.list-header button {
+  width: 200px;
+  background-color: orchid;
 }
