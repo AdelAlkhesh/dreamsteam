@@ -2,9 +2,15 @@
 
 {{#each lists}}
   {{#if this.name}}
-    <form action="/lists/{{this._id}}">
-      <button>{{this.name}}</button>
-    </form>
+    <div class="card text-dark bg-light mb-3" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{this.name}}</h5>
+        <p class="card-text">{{this.description}}</p>
+        <a><form action="/lists/{{this._id}}">
+            <button>{{this.name}}</button>
+          </form></a>
+      </div>
+    </div>
   {{/if}}
 
 {{/each}}
