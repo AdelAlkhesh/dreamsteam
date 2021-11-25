@@ -1,22 +1,25 @@
 <h1>This is the game page</h1>
 
-<form action="/games">
-  <input type="text" placeholder="Search Game" />
+<form action="/games" method="GET">
+  {{#if query}}
+    <input
+      type="text"
+      placeholder="Search Game"
+      name="search"
+      value="{{query}}"
+    />
+  {{else}}
+    <input type="text" placeholder="Search Game" name="search" />
+  {{/if}}
+
   <button type="submit">Search</button>
 </form>
-<br>
+<br />
 {{#each games}}
-<form action="/games/{{this.apps.appid}}">
+
+  <form action="/games/{{this.apps.appid}}">
     <button>{{this.apps.name}}</button>
-</form>
+  </form>
+
 {{/each}}
 
-
-<footer>
-    <a href="/games/-1">
-        <button>prev page</button>
-    </a>
-    <a href="/games/+1">
-        <button>next page</button>
-    </a>
-</footer>

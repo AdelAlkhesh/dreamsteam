@@ -4,7 +4,7 @@ const GameList = require("../models/Gamelist.model")
 
 router.get("/lists", (req, res, next) => {
     GameList.find()
-    .populate('user')
+    .populate()
     .then((lists) => {
         console.log(lists);
         res.render("../views/lists.hbs", {lists})
