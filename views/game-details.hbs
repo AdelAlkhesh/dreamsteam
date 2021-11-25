@@ -1,19 +1,84 @@
-<img src="{{gameData.data.header_image}}" alt="game image goes here">
-<h1>{{gameData.data.name}}</h1>
+<div class="detailContainer">
+  <div
+    class="gameDetails"
+    style="background-image: url({{gameData.data.background}}"
+  >
+    <div class="gameHeader">
+      <div class="gameImage">
+        <img src="{{gameData.data.header_image}}" alt="game image goes here" />
+        <div class="tagsContainer">
+          {{#each gameData.data.categories}}
 
-<div>{{gameData.data.short_description}}</div>
+            <span class="tags">{{this.description}}</span>
 
-<br>
+          {{/each}}
+        </div>
+        <div class="platforms">
+          {{#if gameData.data.platforms.windows}}
+            <span class="platform">Windows</span>
+          {{/if}}
+          {{#if gameData.data.platforms.mac}}
+            <span class="platform">Mac</span>
+          {{/if}}
+          {{#if gameData.data.platforms.linux}}
+            <span class="platform">Linux</span>
+          {{/if}}
+        </div>
+        <div class="ratings">
+          {{#if gameData.data.metacritic}}
+            <p class="rating">Metacritic score:
+              {{gameData.data.metacritic.score}}%</p>
+          {{else}}
+            <p class="rating">Steam Recommendations:
+              {{gameData.data.recommendations.total}}</p>
+          {{/if}}
+        </div>
+        <div class="release">
+          <p class="releaseDate">Released:
+            {{gameData.data.release_date.date}}</p>
+        </div>
+      </div>
+      <div class="gameDescription">
+        <h1>{{gameData.data.name}}</h1>
+        <hr />
 
-{{!-- <label for="">Add to list</label>
+        <div>{{gameData.data.short_description}}</div>
+        <hr />
 
-<select name="list" id="list">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-</select> --}}
+        <p>
+          {{#if gameData.data.is_free}}
+            <p class="priceInfo">FREE</p>
+          {{else}}
+            <div class="priceInfo">
+              <span
+                class="discount"
+              >{{gameData.data.price_overview.discount_percent}}%</span>
 
-<button>
-    <a href="https://store.steampowered.com/app/{{gameData.data.steam_appid}}/">Check it out on Steam</a>
-</button>
+              {{gameData.data.price_overview.final_formatted}}
+            </div>
+
+          {{/if}}
+        </p>
+
+        <button class="steam">
+          <a
+            href="https://store.steampowered.com/app/{{gameData.data.steam_appid}}/"
+          >Check it out on Steam</a>
+        </button>
+      </div>
+    </div>
+
+    <br />
+
+    <div class="screenshotsContainerContainer">
+      <div class="screenshotsContainer">
+        {{#each gameData.data.screenshots}}
+          <img class="screenshots" src="{{this.path_thumbnail}}" alt="" />
+        {{/each}}
+      </div>
+    </div>
+    
+
+  </div>
+
+</div>
