@@ -15,28 +15,20 @@
   <button type="submit">Search</button>
 </form>
 <br />
+<div class="container tablehead">
+  <h4>ID</h4>
+  <h4>Game</h4>
+  <h4>Details</h4>
+</div>
 {{#each games}}
-  <div class="table-responsive">
-    <table class="table table-hover table-dark align-middle">
-      <thead>
-        <tr class="align-">
-          <th scope="col">id</th>
-          <th scope="col">Game</th>
-          <th scope="col">Details</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">{{this.apps.appid}}</th>
-          <td>{{this.apps.name}}</td>
-          <td><button>Game page</button></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  {{!-- <form action="/games/{{this.apps.appid}}">
+<div class="container">
+    <h4>{{this.apps.appid}}</h4>
+    <h4>{{this.apps.name}}</h4>
+    <form action="/games/{{this.apps.appid}}">
     <button>{{this.apps.name}}</button>
-  </form> --}}
+  </form>
+</div>
+
+  
 
 {{/each}}
