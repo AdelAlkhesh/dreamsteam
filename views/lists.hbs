@@ -1,7 +1,10 @@
 <h1>All lists</h1>
 
 {{#each lists}}
+  {{#if this.name}}
     <form action="/lists/{{this._id}}">
-        <button>{{this.name}}</button>
+      <button>{{this.name}}</button>
     </form>
+  {{/if}}
+
 {{/each}}

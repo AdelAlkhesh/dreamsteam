@@ -9,7 +9,6 @@ const gameListSchema = new Schema(
       }
     }],
     name: String,
-    is_private: String,
     description: String, 
     user: {
       type: [Schema.Types.ObjectId],
