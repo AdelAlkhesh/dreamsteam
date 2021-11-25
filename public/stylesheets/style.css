@@ -250,4 +250,44 @@ h1 {
   text-decoration: none;
   color: white;
   font-size: 30px;
+
+}
+
+
+.notfound {
+  height: 700px;
+  width: 700px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #4d5d67;
+  padding: 50px;
+  border-radius: 15px;
+}
+
+.notfoundcontainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 10%;
+}
+
+.fourofour {
+  font-size: 100px;
+  margin-bottom: 50px;
+}
+
+.notfoundtxt {
+  margin-top: 100px;
+  color: #57a4cd;
+}
+
+.outbtn {
+  margin-top: 25px;
+  height: 50px;
+  width: 150px;
+  background-color: #243c4e;
+  color: white;
+  border-radius: 10px;
+  font-size: 25px;
 }

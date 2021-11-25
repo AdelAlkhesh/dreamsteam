@@ -54,8 +54,8 @@ passport.deserializeUser((id, cb) => {
 passport.use(
   new SteamStrategy(
     {
-      returnURL: "https://thedreamsteam.herokuapp.com/auth/login/return",
-      realm: "https://thedreamsteam.herokuapp.com/",
+      returnURL: "http://localhost:3000/auth/login/return",
+      realm: "http://localhost:3000/",
       apiKey: process.env.API_KEY,
     },
     async function (identifier, profile, done) {
