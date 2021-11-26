@@ -1,14 +1,21 @@
-<h1>{{list.name}}</h1>
+<div class="entireDetailsPage">
+  <div class="listDetailsTitle">
+    <h1>{{list.name}}</h1></div>
+  <div class="listDetailsPage">
+    <div class="listDetailsCard">
+      <p><h2>Description:</h2>{{list.description}}</p>
+      <p><h2>Games:</h2></p>{{list.games}}
 
-<div>
-    <p>Description: {{list.description}}</p>
-    <ul>Games:
-        {{#each list.games}}
-            <li>Name:{{this.name}}</li>
-        {{/each}}
-    </ul>
-    <form method="POST" action="/lists/{{list._id}}/delete">
-        <button class="btn btn-danger" type="submit">DELETE</button>
-    </form>
-    <a href="/lists/{{list._id}}/edit"><button class="btn btn-warning" type="submit">EDIT</button></a>
+      <div class="listDetailsBtns">
+        <form method="POST" action="/lists/{{list._id}}/delete">
+          <button class="btn btn-danger" type="submit">DELETE</button>
+        </form>
+        <a href="/lists/{{list._id}}/edit"><button
+            class="btn btn-warning"
+            type="submit"
+          >EDIT</button></a>
+      </div>
+    </div>
+  </div>
+
 </div>

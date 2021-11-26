@@ -2,12 +2,7 @@ const { Schema, model } = require("mongoose");
 
 const gameListSchema = new Schema(
   {
-    games: [{
-      apps: {
-        appid: Number,
-        name: String
-      }
-    }],
+    games: String,
     name: String,
     description: String, 
     user: {

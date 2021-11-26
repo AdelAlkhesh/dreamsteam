@@ -1,16 +1,40 @@
-<h1>Create a list</h1>
-
-<form method="POST" action="/lists/create">
-    <div class="mb-3">
-        <label class="form-label">Name of the list</label>
-        <input class="form-control" type="text" name="name" />
-        <br />
-        <label class="form-label">Description</label>
-        <input class="form-control" type="text" name="description" />
-        <br />
-
-        </div>
-        <br />
-        <button class="btn btn-light" type="submit">SUBMIT</button>
+<div class="listTitle">
+  <h1>Create a list</h1>
+</div>
+<div class="listform">
+  <form method="POST" action="/lists/create">
+    <div class="form-floating mb-3">
+      <input
+        name="name"
+        type="text"
+        class="form-control"
+        id="floatingInput"
+        placeholder="List Name"
+      />
+      <label for="floatingInput">List Name</label>
     </div>
-</form>
+    <div class="form-floating">
+      <input
+        name="description"
+        type="text"
+        class="form-control"
+        id="floatingInput"
+        placeholder="Description"
+      />
+      <label for="floatingPassword">Description</label>
+    </div>
+    <div class="form-floating">
+      <textarea
+        class="form-control"
+        placeholder="List Your Games Here"
+        id="floatingTextarea"
+        name="games"
+      ></textarea>
+      <label for="floatingTextarea">Games</label>
+    </div>
+    <div class="listBtn">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+
+  </form>
+</div>

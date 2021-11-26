@@ -1,23 +1,45 @@
-<h1>Edit list</h1>
-<h1>{{result.name}}</h1>
-<form method="POST" action="/lists/{{result._id}}/edit">
-    <div class="mb-3">
-        <label class="form-label">Title</label>
-        <input class="form-control" value="{{result.name}}" type="text" name="name">
-        <br>
-        <label class="form-label">Description</label>
-        <input class="form-control" value="{{result.description}}" type="text" name="description">
-        <br>
-        <!-- <form action="/games" method="GET">
-            {{#if query}}
-            <input type="text" placeholder="Search Game" name="search" value="{{query}}" />
-            {{else}}
-            <input type="text" placeholder="Search Game" name="search" />
-            {{/if}}
-        
-            <button type="submit">Search</button>
-        </form> -->
-        <br>
-        <button class="btn btn-primary" type="submit"><a href="/lists">SUBMIT</a></button>
+<div class="listEditTitle">
+  <h1>Edit list</h1>
+  <h1>{{result.name}}</h1>
+
+</div>
+<div class="listform">
+  <form method="POST" action="/lists/{{result._id}}/edit">
+    <div class="form-floating mb-3">
+      <input
+        value="{{result.name}}"
+        name="name"
+        type="text"
+        class="form-control"
+        id="floatingInput"
+        placeholder="List Name"
+      />
+      <label for="floatingInput">List Name</label>
     </div>
-</form>
+    <div class="form-floating">
+      <input
+        value="{{result.description}}"
+        name="description"
+        type="text"
+        class="form-control"
+        id="floatingInput"
+        placeholder="Description"
+      />
+      <label for="floatingPassword">Description</label>
+    </div>
+    <div class="form-floating">
+      <textarea
+        value="{{result.games}}"
+        class="form-control"
+        placeholder="List Your Games Here"
+        id="floatingTextarea"
+        name="games"
+      ></textarea>
+      <label for="floatingTextarea">Games</label>
+    </div>
+    <div class="listBtn">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+
+  </form>
+</div>
