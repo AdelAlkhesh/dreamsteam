@@ -34,7 +34,7 @@ router.get("/lists/:listId", (req, res, next) => {
     const {listId} = req.params
     GameList.findById(listId)
     .then((list) => {
-        console.log(list)
+        // console.log(list)
         res.render("../views/list-details.hbs", {list})
     }).catch((err) => {
         next(err)

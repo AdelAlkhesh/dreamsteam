@@ -43,7 +43,7 @@ h1 {
   justify-content: center;
   align-items: center;
   width: 1200px;
-  height: 400px;
+  height: 450px;
   background-color: rgba(32, 34, 41, 0.9);
   border-radius: 20px;
 }
@@ -532,4 +532,19 @@ h1 {
   justify-content: space-evenly;
   gap: 20px;
   
+}
+.logoutBtn {
+  margin-top: 20px;
+  width: 100px;
+  padding: 10px;
+  background: linear-gradient(to right, red 5%, #ad283f 60%);
+  box-shadow: 2px 2px 5px rgb(0 0 0 / 20%);
+  background-position: 25%;
+  background-size: 330% 100%;
+  border-radius: 12px;
+}
+
+.logoutBtn a {
+  color: white;
+  text-decoration: none;
 }
