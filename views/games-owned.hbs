@@ -1,9 +1,16 @@
-<h1>Games Owned: {{count}}</h1>
+<div class="pagetitle">
+  <h1>Games Owned: {{count}}</h1>
+</div>
 
-{{#each list}}
-<ul>
-    <li>{{this.name}}</li>
-    <li>{{this.playtime_forever}} hours</li>
-    <li><img src="https://steamcdn-a.akamaihd.net/steam/apps/{{this.appid}}/header.jpg" alt=""></li>
-</ul>
-{{/each}}
+<div class="ownedGamesContainer">
+  {{#each list}}
+    <div class="stats">
+      <img
+        src="https://steamcdn-a.akamaihd.net/steam/apps/{{this.appid}}/header.jpg"
+        alt="Not available"
+      />
+      <h3>{{this.name}}</h3>
+      <h5>{{this.playtime_forever}} hours</h5>
+    </div>
+  {{/each}}
+</div>

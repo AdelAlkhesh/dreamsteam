@@ -349,12 +349,11 @@ h1 {
   flex-wrap: wrap;
 }
 
-.listDetailsBtn{
+.listDetailsBtn {
   border-radius: 5px;
   padding: 5px;
   background-color: #161920;
   color: white;
-  
 }
 
 .oneList {
@@ -368,8 +367,8 @@ h1 {
   font-size: 20px;
 }
 
-.card-title{
-  color:#70baf6;
+.card-title {
+  color: #70baf6;
   font-size: 35px;
 }
 
@@ -387,12 +386,12 @@ h1 {
 .list-header button {
   width: 200px;
   background: linear-gradient(to right, #75b022 5%, #588a1b 95%);
-  padding: 10px; 
+  padding: 10px;
   border-radius: 5px;
   margin: 10px;
 }
 
-.list-header button a{
+.list-header button a {
   color: white;
   text-decoration: none;
   font-size: 15px;
@@ -404,6 +403,24 @@ h1 {
   background-color: #161920;
 }
 
-.card-body {
-  background-color: indigo;
+.stats img {
+  width: 200px;
+}
+
+.ownedGamesContainer {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.stats {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid white;
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
