@@ -4,17 +4,7 @@ const router = require("express").Router();
 const Games = require("../models/Games.model");
 const GamesIdModel = require("../models/Games-id.model");
 
-// router.get("/gamelists", (req, res, next) => {
 
-// })
-
-// router.get('/createlist', (req, res, next) => {
-
-// })
-
-// router.post("/createlist", (req, res, next) => {
-
-// });
 
 router.get("/games", (req, res, next) => {
   if (req.query.search) {

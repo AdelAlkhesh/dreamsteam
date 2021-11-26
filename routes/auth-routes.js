@@ -58,15 +58,7 @@ router.post(
   })
 );
 
-router.get('/private-page', (req, res) => {
-  if (!req.user) {
-    res.redirect('/login'); // can't access the page, so go and log in
-    return;
-  }
- 
-  // ok, req.user is defined
-  res.render('private', { user: req.user });
-});
+
 
 
 

@@ -406,7 +406,7 @@ h1 {
 
 
 .stats img{ 
-  width: 200px;
+  width: 250px;
 }
 
 .ownedGamesContainer{
@@ -417,6 +417,8 @@ h1 {
 }
 
 .stats{
+  width: 300px;
+  background-color:#4d5d67;
   margin: 10px;
   padding: 10px;
   border: 1px solid white;
@@ -426,4 +428,30 @@ h1 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.pageTitle{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  padding: 40px
+}
+
+.stats h3{ 
+  font-size: 25px;
+  color: #00b7ff;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.stats h5{
+  padding: 5px;
+  margin-top: 10px;
+  background-color: #0e151d;
+  color:#75b022;
+  border-radius: 5px;
+}
+
+.wholePage{
+  background-color: #161920;
 }
