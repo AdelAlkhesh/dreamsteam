@@ -2,10 +2,7 @@
 
 <div>
     <p>Description: {{list.description}}</p>
-    <ul>Games:
-        {{#each list.games}}
-            <li>Name:{{this.name}}</li>
-        {{/each}}
+    <ul>Games: {{list.games}}
     </ul>
     <form method="POST" action="/lists/{{list._id}}/delete">
         <button class="btn btn-danger" type="submit">DELETE</button>
